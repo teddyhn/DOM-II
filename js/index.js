@@ -69,3 +69,6 @@ noContext.forEach(p => {
         event.preventDefault();
     })
 });
+
+
+TweenMax.to('img', 8, {opacity:1, ease: Power4.easeOut});
