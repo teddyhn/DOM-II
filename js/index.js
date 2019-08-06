@@ -27,12 +27,16 @@ images.forEach(image => {
     });
 });
 
-// focus, keydown, keyup
+// focus, blur, keydown, keyup
 
 let destination = document.querySelector('.content-destination');
 
 destination.addEventListener('focus', evt => {
     event.target.style.background = 'pink';
+});
+
+destination.addEventListener('blur', evt => {
+    event.target.style.background = 'inherit';
 });
 
 destination.addEventListener('keydown', evt => {
@@ -41,4 +45,27 @@ destination.addEventListener('keydown', evt => {
 
 destination.addEventListener('keyup', evt => {
     event.target.style.background = 'yellow';
+});
+
+// wheel
+
+let nav = document.querySelectorAll('.content-section .text-content p');
+
+nav.forEach(p => {
+    p.addEventListener('wheel', evt => {
+        evt.target.style.display = 'none';
+        setTimeout(function() {
+            evt.target.style.display = 'block';
+        }, 2000);
+    }, false)
+});
+
+// contextmenu
+
+let noContext = document.querySelectorAll('.destination p');
+
+noContext.forEach(p => {
+    p.addEventListener('contextmenu', evt => {
+        event.preventDefault();
+    })
 });
