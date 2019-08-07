@@ -162,6 +162,7 @@ p {
 img {
   max-width: 100%;
   height: auto;
+  opacity: 0;
 }
 .container {
   max-width: 800px;
@@ -180,6 +181,7 @@ img {
   background: #FFFFFF;
   border-bottom: 2px dashed #C0C0C0;
   position: fixed;
+  z-index: 100;
 }
 .main-navigation .nav-container {
   height: 100%;
