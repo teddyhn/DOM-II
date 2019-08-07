@@ -14,44 +14,44 @@ busImg.addEventListener('dblclick', evt => {
 let images = document.querySelectorAll('img');
 
 images.forEach(image => {
-    image.addEventListener('click', event => {
-        event.target.style.maxWidth = '200%';
+    image.addEventListener('click', evt => {
+        evt.target.style.maxWidth = '200%';
     });
 
-    image.addEventListener('mouseover', event => {
-        event.target.style.cursor = 'zoom-in';
+    image.addEventListener('mouseover', evt => {
+        evt.target.style.cursor = 'zoom-in';
     });
 
-    image.addEventListener('mouseout', event => {
-        event.target.style.maxWidth = '100%';
+    image.addEventListener('mouseout', evt => {
+        evt.target.style.maxWidth = '100%';
     });
 });
 
 // focus, blur, keydown, keyup
 
-let destination = document.querySelector('.content-destination');
+let destination = document.querySelector('.content-destination p');
 
 destination.addEventListener('focus', evt => {
-    event.target.style.background = 'pink';
+    evt.target.style.background = 'pink';
 });
 
 destination.addEventListener('blur', evt => {
-    event.target.style.background = 'inherit';
+    evt.target.style.background = 'inherit';
 });
 
 destination.addEventListener('keydown', evt => {
-    event.target.style.background = 'black';
+    evt.target.style.background = 'black';
 });
 
 destination.addEventListener('keyup', evt => {
-    event.target.style.background = 'yellow';
+    evt.target.style.background = 'yellow';
 });
 
 // wheel
 
-let nav = document.querySelectorAll('.content-section .text-content p');
+let disappear = document.querySelectorAll('.content-section .text-content p');
 
-nav.forEach(p => {
+disappear.forEach(p => {
     p.addEventListener('wheel', evt => {
         evt.target.style.display = 'none';
         setTimeout(function() {
@@ -66,9 +66,36 @@ let noContext = document.querySelectorAll('.destination p');
 
 noContext.forEach(p => {
     p.addEventListener('contextmenu', evt => {
-        event.preventDefault();
+        evt.preventDefault();
     })
 });
 
+// stretch animation
 
 TweenMax.to('img', 8, {opacity:1, ease: Power4.easeOut});
+
+// preventDefault
+
+let stopNav = document.querySelectorAll('a.nav-link');
+
+stopNav.forEach(link => {
+    link.addEventListener('click', evt => {
+        evt.preventDefault();
+    })
+});
+
+// stopPropagation
+
+let stopProp = document.querySelector('.inverse-content');
+
+stopProp.addEventListener('click', evt => {
+    evt.target.style.background = 'green';
+})
+
+let stopPropTwo = document.querySelector('.inverse-content .text-content');
+
+stopPropTwo.addEventListener('click', evt => {
+    evt.stopPropagation();
+    alert('Clicked! Not green!');
+})
+
